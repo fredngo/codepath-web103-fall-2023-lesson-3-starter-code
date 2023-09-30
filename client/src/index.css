@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700;800&display=swap');
+
+.app-main {
+  font-family: Karla, Verdana, sans-serif;
+  padding: 75px;
+}
+
+nav {
+  font-family: inherit;
+}
+
+nav li {
+  font-weight: 600;
+}
+
+:root h1 {
+  font-family: inherit;
+  font-weight: 800;
+  margin-bottom: 0px;
+}
+
+:root h2 {
+  font-family: inherit;
+  margin-bottom: 0px;
+  color: white;
+}
+
+p {
+  color: white;
+}
+
+article {
+  height: 300px;
+}
+
+.game-details h2,
+.game-details p {
+  color: black;
+}
+
+.game-details img {
+  width: 600px;
+  height: auto;
+}
