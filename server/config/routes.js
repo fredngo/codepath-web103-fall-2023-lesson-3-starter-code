@@ -1,24 +1,12 @@
-const express = require('express')
-const { pool } = require('./database.js')
+import express from 'express'
 
-// get all video games from the database
+import VideogamesController from '../controllers/videogames.js'
 
+const router = express.Router()
 
+// routes to get all video games, video games by ID, and video games by platform
+router.get('/videogames', VideogamesController.getVideoGames)
+router.get('/videogames/:id', VideogamesController.getVideoGamesById)
+router.get('/videogames/platform/:platform', VideogamesController.getVideoGamesByPlatform)
 
-
-// get video games by ID from the database
-
-
-
-
-// get video games by platform from the database
-
-
-
-
-
-module.exports = {
-    
-
-    
-}
+export default router
