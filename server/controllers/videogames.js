@@ -1,11 +1,12 @@
-import { pool } from '../config/database.js'
+import Videogame from '../models/videogame.js'
 
 // get all video games from the database
 const getVideoGames = async (req, res) => {
   try {
-    const results = await pool.query('SELECT * FROM videogames ORDER BY id ASC')
+    const results = await Videogame.findAll()
     res.status(200).json(results.rows)
   } catch (error) {
+    console.log(error)
     res.status(400).json( { error: error.message } )
   }
 }
@@ -13,8 +14,7 @@ const getVideoGames = async (req, res) => {
 // get video games by ID from the database
 const getVideoGamesById = async (req, res) => {
   try {
-    const gameId = req.params.id
-    const results = await pool.query('SELECT * FROM videogames WHERE id = $1', [gameId])
+    const results = await Videogame.findOne(req.params.id)
     res.status(200).json(results.rows[0])
   } catch (error) {
     res.status(400).json( { error: error.message } )
@@ -24,8 +24,7 @@ const getVideoGamesById = async (req, res) => {
 // get video games by platform from the database
 const getVideoGamesByPlatform = async (req, res) => {
   try {
-    const gamePlatform = req.params.platform
-    const results = await pool.query('SELECT * FROM videogames WHERE platform = $1', [gamePlatform])
+    const results = await Videogame.findAll(req.params.platform)
     res.status(200).json(results.rows)
   } catch (error) {
     res.status(400).json( { error: error.message } )

@@ -10,4 +10,4 @@ const config = {
 
 const pool = new pg.Pool(config)
 
-export { pool }
+export default pool
