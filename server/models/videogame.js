@@ -1,11 +1,19 @@
+import pool from '../config/database.js'
 
-
-const findAll = async () => {
-
+const findAll = (platform) => {
+  if (platform) {
+    const query = 'SELECT * FROM videogames WHERE platform = $1 ORDER BY title ASC'
+    return pool.query(query, [platform])
+  }
+  else {
+    const query = 'SELECT * FROM videogames ORDER BY title ASC'
+    return pool.query(query)
+  }
 }
 
-const findOne = async () => {
-
+const findOne = (id) => {
+  const query = 'SELECT * FROM videogames WHERE id = $1'
+  return pool.query(query, [id])
 }
 
 export default {
